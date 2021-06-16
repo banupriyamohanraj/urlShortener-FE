@@ -1,5 +1,8 @@
 
 import {useState} from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useHistory } from 'react-router-dom'
 
 
 export default function Resetpassword(props) {
@@ -7,6 +10,8 @@ export default function Resetpassword(props) {
     let token = props.match.params.token;
 
     console.log(props.match.params.token)
+    toast.configure()
+    let history = useHistory();
     let UserSubmit = async (e) => {
         e.preventDefault()
          await fetch("https://urlshortener--be.herokuapp.com/auth/newpassword", {
@@ -20,10 +25,12 @@ export default function Resetpassword(props) {
         }).then(res => {
             return res.json();
 
-        }).then((message) => {
-            console.log(message)
-            let mesg = JSON.stringify(message)
-            alert(mesg)
+        }).then((data) => {
+            let mesg = data.message
+            toast(mesg, { position: toast.POSITION.TOP_CENTER })
+            if(mesg === "Password Updated Successfully"){
+                history.push('/home')
+               }
         }).catch(err => {
             // Do something for an error here
             console.log("Error Reading data " + err);
