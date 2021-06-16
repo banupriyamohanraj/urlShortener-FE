@@ -57,7 +57,7 @@ export default function Login() {
         <div className='container'>
             <div className='row'>
                 <div className='col-md-7' style={{ "padding-left": "50px", "margin-left": "200px", "margin-top": "10px" }}>
-                    <div class="card" style={{ "padding": "20px", "border-radius": "3%" }} >
+                    <div class="card" style={{ "padding": "20px", "border-radius": "3%" ,"marginTop":"50px"}} >
                         <div className='card-title' style={{ "textAlign": "center" }}>
                             <img src="https://thumbs.dreamstime.com/b/user-icon-member-login-vector-isolated-white-background-form-155134186.jpg" alt ="login member img" width="70" height="70"></img>
                             <h2>LOGIN</h2>
