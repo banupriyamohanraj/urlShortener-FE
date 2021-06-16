@@ -29,7 +29,7 @@ export default function Resetpassword(props) {
             let mesg = data.message
             toast(mesg, { position: toast.POSITION.TOP_CENTER })
             if(mesg === "Password Updated Successfully"){
-                history.push('/home')
+                history.push('/')
                }
         }).catch(err => {
             // Do something for an error here
@@ -40,21 +40,29 @@ export default function Resetpassword(props) {
     return (
         <div className="container">
             <div className="row justify-content-center">
-                <h1>Reset password</h1>
+                
                 <div className="col-md-8 m-4">
 
-                    <form onSubmit={UserSubmit}>
+                <div class="card">
+                    <div className='card-header'>
+                    <h1>Reset password</h1>
+                    </div>
+  <div class="card-body">
+  <form onSubmit={UserSubmit}>
 
-                        <div class="form-group m-2">
-                            <label for="exampleInputPassword1">Enter new Password</label>
-                            <input type="password" class="form-control" onChange={(e)=>{setpassword(e.target.value)}}></input>
-                        </div>
+<div class="form-group m-2">
+    <label for="exampleInputPassword1">Enter new Password</label>
+    <input type="password" class="form-control" onChange={(e)=>{setpassword(e.target.value)}}></input>
+</div>
 
 
-                        <br />
-                        <button type="submit" class="btn btn-primary">Submit</button>
+<br />
+<button type="submit" class="btn btn-primary">Submit</button>
 
-                    </form>
+</form>
+  </div>
+</div>
+                    
                     
                 </div>
             </div>
