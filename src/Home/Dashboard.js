@@ -15,11 +15,15 @@ export default function Dashboard(){
     toast.configure()
 
 
-    useEffect(async() => {
+    useEffect(() => {
+
+        async function fetchData() {
         let urldata = await fetch("https://urlshortener--be.herokuapp.com/url/allurlcount");
         let allurldata = await urldata.json();
         console.log(allurldata);
         setdata(allurldata)
+        }
+        fetchData();
     }, [])
     let date = moment(value).format('YYYY-MM-DD');
 
@@ -74,10 +78,10 @@ export default function Dashboard(){
                                         <div class="list-group shadow p-3 mb-3 bg-white rounded">
                                             <a href="#" class="list-group-item list-group-item-action">
                                                 <div class="d-flex w-100 justify-content-between">
-                                                <h6>ShortUrl : <a href={shortlink} target='blank'>https://urlshortener--be.herokuapp.com/url/{obj.shortid}</a></h6>
+                                                <h6>ShortUrl : <a href={shortlink} target='blank' rel="noreferrer">https://urlshortener--be.herokuapp.com/url/{obj.shortid}</a></h6>
                                                 </div>
                                                 <br/>
-                                                <h6>LongUrl : <a href={obj.longurl} target='_blank'>{obj.longurl}</a></h6>
+                                                <h6>LongUrl : <a href={obj.longurl} target='_blank' rel="noreferrer">{obj.longurl}</a></h6>
                                                 
                                             </a>
                                         </div>
