@@ -27,9 +27,9 @@ export default function Dashboard(){
     }, [])
     let date = moment(value).format('YYYY-MM-DD');
 
-    useEffect(async () => {
+    useEffect( () => {
         
-          
+        async function fetchDataCount() {
     
             await fetch('https://urlshortener--be.herokuapp.com/url/date/count', {
                 method: "POST",
@@ -49,6 +49,8 @@ export default function Dashboard(){
                     // let mesg = data.message;
                     // toast(mesg, { position: toast.POSITION.TOP_CENTER })
                 })
+            }
+            fetchDataCount();
       
     }, [date])
 
