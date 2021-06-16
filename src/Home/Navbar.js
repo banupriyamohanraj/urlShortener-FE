@@ -1,13 +1,12 @@
 
 import { Link } from "react-router-dom";
-import { useHistory } from 'react-router-dom'
+
 
 
 
 
 export default function Navbar() {
 
-    let history = useHistory();
     
     // console.log(urldata)
 
@@ -27,7 +26,7 @@ export default function Navbar() {
                         <Link to="/listurl" class="nav-link" >List all URL</Link>
                     </li>
                 </ul>
-                <button type='submit' id='logout' className='btn-light' onClick={()=>{ history.push('/')  }}>logout</button>
+          
             </div>
         </nav>
         <br />

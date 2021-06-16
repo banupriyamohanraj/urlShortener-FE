@@ -66,26 +66,26 @@ export default function Dashboard(){
                         </div>
                         <div className="card-body">
                             <div>
-                               Please select a date... <DatePicker value={value} onChange={onChange} format="y-MM-dd" maxDate={new Date()} dayPlaceholder='dd' monthPlaceholder='mm' yearPlaceholder="yyyy"/>
+                               Please select a date... <DatePicker value={value} onChange={onChange} format="dd-MM-y" maxDate={new Date()} dayPlaceholder='dd' monthPlaceholder='mm' yearPlaceholder="yyyy"/>
                               
                             </div>
                             <hr/>
                             <div>
-                                <h5>Links created on <Moment format='YYYY-MM-DD'>{value}</Moment></h5>
-                             <br/>
+                                
+                             
                                 {
                                     urldata.map((obj) => {
                                         let shortlink = `https://urlshortener--be.herokuapp.com/url/${obj.shortid}`;
-                                        return <>
+                                        return <> <h5>Link created on <Moment format='DD-MM-YYYY'>{obj.date}</Moment></h5>
                                         <div class="list-group shadow p-3 mb-3 bg-white rounded">
-                                            <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="list-group-item list-group-item-action">
                                                 <div class="d-flex w-100 justify-content-between">
                                                 <h6>ShortUrl : <a href={shortlink} target='blank' rel="noreferrer">https://urlshortener--be.herokuapp.com/url/{obj.shortid}</a></h6>
                                                 </div>
                                                 <br/>
                                                 <h6>LongUrl : <a href={obj.longurl} target='_blank' rel="noreferrer">{obj.longurl}</a></h6>
                                                 
-                                            </a>
+                                            </div>
                                         </div>
                                         <br/>
                                         </>
