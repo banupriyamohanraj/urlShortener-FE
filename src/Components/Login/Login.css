@@ -1,0 +1,28 @@
+/* .container-fluid{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+#Apptitle{
+    background-image: linear-gradient(to right, pink , blue);
+color: Black;
+height: 730px;
+display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#Applogin{
+
+    display: flex; 
+    justify-content: center;
+
+}
+
+.CardContainer{
+    
+    margin-top: 100px ;
+   width:70%;
+  
+}

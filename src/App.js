@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
 Route} from "react-router-dom"
-import Login from './Components/Login';
+import Login from './Components/Login/Login';
 import Registration from './Components/Registration';
 import Forgotpassword from './Components/Forgotpassword';
 import Resetpassword from "./Components/Resetpassword";

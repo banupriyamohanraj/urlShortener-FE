@@ -26,7 +26,7 @@ export default function Createurl() {
             let mesg = data.message
             toast(mesg, { position: toast.POSITION.TOP_CENTER })
         })
-
+        
     }
 
     return <><div className="container-fluid">
@@ -43,6 +43,7 @@ export default function Createurl() {
                         </div>
 
                     </div>
+                    
                 </form>
             </div>
         </div>

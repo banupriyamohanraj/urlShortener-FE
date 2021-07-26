@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import './Listurl.css'
 export default function Listurl() {
 
     let [data, setdata] = useState([])
@@ -15,10 +15,16 @@ export default function Listurl() {
     }, [])
 
     return <>
-        <div className="container-fluid ">
+        <div className="container-fluid " id="List__Container">
             <div className="row">
                 <div className="col-lg-12 text-center mt-4 ">
-                    <h2>URLs created so far</h2>
+                    <div className="card shadow">
+                        <div className="card-body">
+                        <h1>URL List</h1>
+                        </div>
+                   
+                    </div>
+                   
                 </div>
             </div>
             <hr />
@@ -27,15 +33,15 @@ export default function Listurl() {
                     data.map((obj) => {
                         let shortlink = `https://urlshortener--be.herokuapp.com/url/${obj.shortid}`;
                         return <div className="col-md-3 mt-2">
-                            <div class="card border-dark mb-3" >
-                                <div class="card-header bg-transparent border-dark">
+                            <div class="card border-primary mb-3 d-flex align-items-stretch h-100" id="List__cards">
+                                <div class="card-header bg-transparent border-primary">
                                     <p class="card-title"><b>ShortUrl :</b> <a href={shortlink} target='blank' rel="noreferrer">https://urlshortener--be.herokuapp.com/url/{obj.shortid}</a></p>
                                 </div>
                                 <div class="card-body text-dark">
 
                                     <p class="card-text"><b>LongUrl :</b> <a href={obj.longurl} target='_blank' rel="noreferrer">{obj.longurl}</a></p>
                                 </div>
-                                <div class="card-footer bg-transparent border-dark">Created on : {obj.date}</div>
+                                <div class="card-footer bg-transparent border-primary">Created on : {obj.date}</div>
                             </div>
                         </div>
 
