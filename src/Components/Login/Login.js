@@ -1,9 +1,10 @@
-import { useState } from "react";
+import {useContext,useState } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Login.css'
+import UserContext  from "../../UserContext/UserContext"
 
 
 export default function Login() {
@@ -11,14 +12,17 @@ export default function Login() {
 
     let [email, setemail] = useState('');
     let [password, setpassword] = useState('');
-    
+    let[loading,setloading] = useState(false);
 
+
+    let userData = useContext(UserContext)
     let history = useHistory();
     toast.configure()
 
 
     let UserSubmit = async (e) => {
         e.preventDefault()
+        setloading(true)
         await fetch('https://urlshortener--be.herokuapp.com/auth/login', {
             method: "POST",
             body: JSON.stringify({
@@ -32,20 +36,34 @@ export default function Login() {
             .then(res => {
                 return res.json();
             }).then((data) => {
-            
+                setloading(false);
+                
+                //Passing userdata to other components
+                userData.setuserlist(data.data)
+              
+                //set Loggedin
+                userData.setuserLoggedIn(true)
+
+                //Notifying
                 let mesg = data.message
-            
                 toast(mesg, { position: toast.POSITION.TOP_CENTER })
                if(mesg === "Login Sucessfull"){
+                    
                 history.push('/home')
                }
               
-              
+           
             })
 
     }
 
-    
+   
+ 
+    if(loading) return <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
 
     return <>
         <div className='container-fluid'>

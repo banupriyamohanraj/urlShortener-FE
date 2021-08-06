@@ -1,19 +1,26 @@
 
 import { Link } from "react-router-dom";
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
+import {useContext} from "react"
+import UserContext  from "../../UserContext/UserContext"
 import "./Navbar.css"
+import { Redirect } from "react-router";
+
 
 
 
 
 export default function Navbar() {
-
-    let history = useHistory();
-    // console.log(urldata)
+    let userData = useContext(UserContext)
+   
+  
    let handleClick=(e)=> {
         e.preventDefault()
-        console.log(e.target)
-        history.push("/")
+        userData.setuserLoggedIn(false)
+        userData.setuserlist(null)
+        if(!userData.userLoggedIn){
+          return <Redirect to='/'/>
+        }
       }
 
     return <>
@@ -32,7 +39,9 @@ export default function Navbar() {
                         <Link to="/listurl" class="nav-link" ><button type="button" className="btn btn-dark">List all URL</button></Link>
                     </li>
                 </ul>
+               
                 <div className="Logout__Link">
+                <span style={{color:"white"}}>HI,{userData.userlist.firstname}</span>&ensp;
                    <button type="button" className="btn btn-dark" onClick={e => handleClick(e)}>Logout</button>
 
                 </div>
@@ -40,7 +49,7 @@ export default function Navbar() {
         </nav>
         <br />
 
-        
+       
 
 
 

@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import DatePicker from 'react-date-picker';
 import Moment from 'react-moment';
 import moment from 'moment'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./Dashboard.css"
+import { Redirect } from "react-router";
+import UserContext from "../../UserContext/UserContext";
 
 
 export default function Dashboard() {
@@ -21,7 +23,7 @@ export default function Dashboard() {
         async function fetchData() {
             let urldata = await fetch("https://urlshortener--be.herokuapp.com/url/allurlcount");
             let allurldata = await urldata.json();
-            console.log(allurldata);
+          
             setdata(allurldata)
         }
         fetchData();
@@ -44,7 +46,7 @@ export default function Dashboard() {
                 .then(res => {
                     return res.json();
                 }).then((data) => {
-                    console.log(data)
+                  
                     let datecountdata = data.data;
                     seturldata([...datecountdata])
 
@@ -54,6 +56,10 @@ export default function Dashboard() {
 
     }, [date])
 
+    let isAuthorized = useContext(UserContext)
+    if(!isAuthorized.userLoggedIn ){
+      return <Redirect to='/'/>
+    }
 
 
     return <>

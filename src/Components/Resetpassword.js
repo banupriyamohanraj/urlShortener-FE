@@ -9,7 +9,7 @@ export default function Resetpassword(props) {
     let [password, setpassword] = useState('')
     let token = props.match.params.token;
 
-    console.log(props.match.params.token)
+   
     toast.configure()
     let history = useHistory();
     let UserSubmit = async (e) => {

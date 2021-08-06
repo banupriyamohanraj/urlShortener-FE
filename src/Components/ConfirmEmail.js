@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 
 export default function ConfirmEmail(props){
     let history = useHistory();
-    console.log(props.match.params.confirmationcode)
+    
 
   
     let confirmationcode = props.match.params.confirmationcode
@@ -12,7 +12,7 @@ export default function ConfirmEmail(props){
     useEffect(()=>{
         confirm()
     })
-    console.log(status)
+
    const confirm =()=>{
     fetch("https://urlshortener--be.herokuapp.com/auth/confirm",{
         method: "PUT",
@@ -25,7 +25,7 @@ export default function ConfirmEmail(props){
     }).then(res=>{
         return res.json();
     }).then((data)=>{
-        console.log(data)
+    
         history.push('/')
     
     })

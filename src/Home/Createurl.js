@@ -1,13 +1,15 @@
-import { useState } from "react"
+import { useContext,useState } from "react"
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Redirect } from "react-router";
+import UserContext from "../UserContext/UserContext";
 
 
 export default function Createurl() {
 
     let [longurl, seturl] = useState('');
     toast.configure()
-    console.log(longurl)
+   
 
     let urlSubmit = async (e) => {
         e.preventDefault();
@@ -27,6 +29,11 @@ export default function Createurl() {
             toast(mesg, { position: toast.POSITION.TOP_CENTER })
         })
         
+    }
+
+    let isAuthorized = useContext(UserContext)
+    if(!isAuthorized.userLoggedIn ){
+      return <Redirect to='/'/>
     }
 
     return <><div className="container-fluid">
